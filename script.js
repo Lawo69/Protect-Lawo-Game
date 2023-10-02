@@ -6,13 +6,22 @@ const gameContainer = document.getElementById('game-container');
         let misses = 0;
         let gameRunning = true;
 
+        function getPixelSize() {
+            return window.innerWidth <= 728 ? 10 : 20;
+        }
+
         function createPixel() {
             if (!gameRunning) return;
 
             const pixel = document.createElement('div');
             pixel.classList.add('pixel');
-            pixel.style.left = Math.random() * (gameContainer.clientWidth - 10) + 'px';
-            pixel.style.top = Math.random() * (gameContainer.clientHeight - 10) + 'px';
+
+            const pixelSize = getPixelSize();
+
+            pixel.style.width = pixelSize + 'px';
+            pixel.style.height = pixelSize + 'px';
+            pixel.style.left = Math.random() * (gameContainer.clientWidth - pixelSize) + 'px';
+            pixel.style.top = Math.random() * (gameContainer.clientHeight - pixelSize) + 'px';
             
             pixel.style.backgroundColor = randomColor();
 
@@ -57,21 +66,30 @@ const gameContainer = document.getElementById('game-container');
                 [0, 2],
                 [0, 3],
                 [0, 4],
-                [1, 4],
-                [2, 4],
-                [3, 4],
+                [0, 5],
+                [0, 6],
+                [0, 7],
+                [0, 8],
+                [1, 8],
+                [2, 8],
+                [3, 8],
+                [4, 8],
+                [5, 8],
+                [6, 8],
             ];
 
            
-            const centerX = Math.floor((gameContainer.clientWidth - 3 * 10) * 0.18);
-            const centerY = Math.floor((gameContainer.clientHeight - 5 * 10) / 2);
+            const centerX = Math.floor((gameContainer.clientWidth - 3 * getPixelSize()) * 0.18);
+            const centerY = Math.floor((gameContainer.clientHeight - 5 * getPixelSize()) / 2);
 
             lPixels.forEach((coords) => {
                 const [x, y] = coords;
                 const lPixel = document.createElement('div');
                 lPixel.classList.add('pixel');
-                lPixel.style.left = centerX + x * 10 + 'px';
-                lPixel.style.top = centerY + y * 10 + 'px';
+                lPixel.style.width = getPixelSize() + 'px';
+                lPixel.style.height = getPixelSize() + 'px';
+                lPixel.style.left = centerX + x * getPixelSize() + 'px';
+                lPixel.style.top = centerY + y * getPixelSize() + 'px';
                 lPixel.style.backgroundColor = randomColor();
                 gameContainer.appendChild(lPixel);
             });
@@ -79,28 +97,45 @@ const gameContainer = document.getElementById('game-container');
 
         function createAShape() {
             const aPixels = [
-                [1, 0],
-                [0, 1],
+                [2, 0],
+                [1, 1],
                 [0, 2],
                 [0, 3],
                 [0, 4],
+                [0, 5],
+                [2, 4],
+                [3, 4],
                 [4, 4],
-                [4, 3],
-                [4, 2],
-                [4, 1],
-                [2, 0],
+                [5, 4],
+                [6, 4],
+                [0, 6],
+                [0, 7],
+                [0, 8],
+                [8, 8],
+                [8, 7],
+                [8, 6],
+                [8, 5],
+                [8, 4],
+                [8, 3],
+                [8, 2],
+                [7, 1],
+                [4, 0],
+                [5, 0],
                 [3, 0],
+                [6, 0],
             ];
 
-            const centerX = Math.floor((gameContainer.clientWidth - 3 * 10) * 0.35);
-            const centerY = Math.floor((gameContainer.clientHeight - 5 * 10) / 2);
+            const centerX = Math.floor((gameContainer.clientWidth - 3 * getPixelSize()) * 0.35);
+            const centerY = Math.floor((gameContainer.clientHeight - 5 * getPixelSize()) / 2);
 
             aPixels.forEach((coords) => {
                 const [x, y] = coords;
                 const aPixel = document.createElement('div');
                 aPixel.classList.add('pixel');
-                aPixel.style.left = centerX + x * 10 + 'px';
-                aPixel.style.top = centerY + y * 10 + 'px';
+                aPixel.style.width = getPixelSize() + 'px';
+                aPixel.style.height = getPixelSize() + 'px';
+                aPixel.style.left = centerX + x * getPixelSize() + 'px';
+                aPixel.style.top = centerY + y * getPixelSize() + 'px';
                 aPixel.style.backgroundColor = randomColor();
                 gameContainer.appendChild(aPixel);
             });
@@ -111,25 +146,40 @@ const gameContainer = document.getElementById('game-container');
                 [0, 0],
                 [0, 1],
                 [0, 2],
-                [1, 3],
-                [2, 4],
-                [3, 3],
-                [4, 4],
-                [5, 3],
-                [6, 2],
-                [6, 1],
-                [6, 0],
+                [0, 3],
+                [0, 4],
+                [0, 5],
+                [1, 6],
+                [2, 7],
+                [3, 8],
+                [4, 8],
+                [5, 7],
+                [6, 5],
+                [6, 6],
+                [7, 7],
+                [8, 8],
+                [9, 8],
+                [10, 7],
+                [12, 5],
+                [11, 6],
+                [12, 4],
+                [12, 3],
+                [12, 2],
+                [12, 1],
+                [12, 0],
             ];
 
-            const centerX = Math.floor((gameContainer.clientWidth - 3 * 10) * 0.53);
-            const centerY = Math.floor((gameContainer.clientHeight - 5 * 10) / 2);
+            const centerX = Math.floor((gameContainer.clientWidth - 3 * getPixelSize()) * 0.53);
+            const centerY = Math.floor((gameContainer.clientHeight - 5 * getPixelSize()) / 2);
 
             wPixels.forEach((coords) => {
                 const [x, y] = coords;
                 const wPixel = document.createElement('div');
                 wPixel.classList.add('pixel');
-                wPixel.style.left = centerX + x * 10 + 'px';
-                wPixel.style.top = centerY + y * 10 + 'px';
+                wPixel.style.width = getPixelSize() + 'px';
+                wPixel.style.height = getPixelSize() + 'px';
+                wPixel.style.left = centerX + x * getPixelSize() + 'px';
+                wPixel.style.top = centerY + y * getPixelSize() + 'px';
                 wPixel.style.backgroundColor = randomColor();
                 gameContainer.appendChild(wPixel);
             });
@@ -137,29 +187,43 @@ const gameContainer = document.getElementById('game-container');
 
         function createOShape() {
             const oPixels = [
-                [1, 0],
-                [0, 1],
+                [2, 0],
+                [1, 1],
                 [0, 2],
                 [0, 3],
-                [1, 4],
-                [2, 4],
-                [3, 4],
-                [4, 3],
-                [4, 2],
-                [4, 1],
+                [0, 4],
+                [0, 5],
+                [0, 6],
+                [1, 7],
+                [2, 8],
+                [3, 8],
+                [4, 8],
+                [5, 8],
+                [6, 8],
+                [7, 7],
+                [8, 6],
+                [8, 5],
+                [8, 4],
+                [8, 3],
+                [8, 2],
+                [7, 1],
+                [6, 0],
+                [5, 0],
                 [3, 0],
-                [2, 0],
+                [4, 0],
             ];
 
-            const centerX = Math.floor((gameContainer.clientWidth - 4 * 10) * 0.76);
-            const centerY = Math.floor((gameContainer.clientHeight - 4 * 10) / 2);
+            const centerX = Math.floor((gameContainer.clientWidth - 3 * getPixelSize()) * 0.76);
+            const centerY = Math.floor((gameContainer.clientHeight - 5 * getPixelSize()) / 2);
 
             oPixels.forEach((coords) => {
                 const [x, y] = coords;
                 const oPixel = document.createElement('div');
                 oPixel.classList.add('pixel');
-                oPixel.style.left = centerX + x * 10 + 'px';
-                oPixel.style.top = centerY + y * 10 + 'px';
+                oPixel.style.width = getPixelSize() + 'px';
+                oPixel.style.height = getPixelSize() + 'px';
+                oPixel.style.left = centerX + x * getPixelSize() + 'px';
+                oPixel.style.top = centerY + y * getPixelSize() + 'px';
                 oPixel.style.backgroundColor = randomColor();
                 gameContainer.appendChild(oPixel);
             });
@@ -182,7 +246,14 @@ const gameContainer = document.getElementById('game-container');
             updateScore();
             gameRunning = true;
             gameOverElement.style.display = 'none';
-            setInterval(createPixel, 1000);
         });
 
         setInterval(createPixel, 1000);
+
+        window.addEventListener('resize', () => {
+            gameContainer.innerHTML = '';
+            createLShape();
+            createAShape();
+            createWShape();
+            createOShape();
+        });

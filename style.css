@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 body {
+
     margin: 0;
     padding: 0;
     font-family: 'VT323', monospace;
@@ -13,22 +14,23 @@ body {
 #head {
     border: 1px solid red;
     border-style: dashed;
-    border-radius: 5px;
-    margin: 15px;
+    border-radius: 25px;
+    margin: 25px;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 25px;
+    padding: 25px 25px;
+    font-size: 35px;
 }
 #game-container {
-    margin: 25px 25px;
+    margin: 35px 35px;
     position: relative;
     height: 50vh;
 }
 .pixel {
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     position: absolute;
 }
 #restart-button {
@@ -48,16 +50,6 @@ body {
     text-align: center;
 }
 
-a {
-    padding-top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    color: #edeef0;
-    text-decoration: none;
-}
-
 
 @media (max-width: 768px) {
     #container {
@@ -65,7 +57,7 @@ a {
     }
 
     #head {
-        font-size: 14px;
+        font-size: 18px;
         padding: 5px 10px;
     }
 
@@ -73,12 +65,7 @@ a {
         margin: 10px;
     }
 
-    .pixel {
-        width: 5px;
-        height: 5px;
-    }
-
     #restart-button {
-        font-size: 16px;
+        font-size: 18px;
     }
 }
