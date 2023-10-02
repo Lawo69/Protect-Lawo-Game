@@ -32,6 +32,7 @@ body {
     width: 20px;
     height: 20px;
     position: absolute;
+    cursor: pointer;
 }
 #restart-button {
     cursor: pointer;
